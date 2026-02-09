@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme color palette */
+  --background-rgb: 220, 225, 216; /* #DCDAD8 - Medium-dark gray-green */
+  --card-rgb: 255, 255, 255; /* #FFFFFF */
+  --primary-rgb: 65, 80, 35; /* Darker olive - #415023 */
+  --accent-rgb: 157, 177, 124; /* #9DB17C */
+  --text-primary-rgb: 15, 23, 42; /* #0F172A - Much darker text */
+  --text-muted-rgb: 75, 85, 99; /* #4B5563 - Darker muted text */
+  --border-rgb: 185, 195, 175; /* #B9C3AF - Medium-dark border */
+
+  /* Derived colors */
+  --primary-50: 247, 249, 244;
+  --primary-100: 239, 242, 235;
+  --primary-200: 226, 232, 216;
+  --primary-300: 203, 216, 183;
+  --primary-400: 168, 189, 130;
+  --primary-500: 133, 163, 77;
+  --primary-600: 106, 130, 62;
+  --primary-700: 85, 107, 47;
+  --primary-800: 64, 81, 35;
+  --primary-900: 52, 66, 29;
+
+  /* Priority colors */
+  --low-priority: 16, 185, 129; /* Emerald green */
+  --medium-priority: 251, 191, 36; /* Amber */
+  --high-priority: var(--accent-rgb); /* Accent color */
+
+  /* Status colors */
+  --completed-bg: 249, 250, 251; /* Light completed background */
+  --pending-bg: 255, 255, 255; /* Card background */
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+body {
+  color: rgb(var(--text-primary-rgb));
+  background-color: rgb(var(--background-rgb));
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Custom animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Priority badges */
+  .priority-low {
+    background-color: rgba(var(--low-priority), 0.15);
+    color: rgb(var(--low-priority));
+    border: 1px solid rgba(var(--low-priority), 0.3);
+  }
+
+  .priority-medium {
+    background-color: rgba(var(--medium-priority), 0.15);
+    color: rgb(var(--medium-priority));
+    border: 1px solid rgba(var(--medium-priority), 0.3);
+  }
+
+  .priority-high {
+    background-color: rgba(var(--accent-rgb), 0.15);
+    color: rgb(var(--accent-rgb));
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+  }
+
+  /* Todo item states */
+  .todo-completed {
+    background-color: rgba(var(--completed-bg)) !important;
+  }
+
+  .todo-pending {
+    background-color: rgb(var(--pending-bg));
+  }
+
+  /* Text colors */
+  .text-primary {
+    color: rgb(var(--text-primary-rgb));
+  }
+
+  .text-muted {
+    color: rgb(var(--text-muted-rgb));
+  }
+
+  .text-accent {
+    color: rgb(var(--accent-rgb));
+  }
+
+  /* Background colors */
+  .bg-card {
+    background-color: rgb(var(--card-rgb));
+  }
+
+  .border-custom {
+    border-color: rgb(var(--border-rgb));
+  }
+}
